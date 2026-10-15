@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Steps from '../components/Steps.astro';
+import CTA from '../components/CTA.astro';
+import { url, CONTACT_EMAIL } from '../lib/url';
+
+const steps = [
+  { title: 'Ni berättar', text: 'Vilka ni vill nå, vad ni vill säga och när utskicket ska landa.' },
+  { title: 'Vi tar fram förslag', text: 'Text, layout och mottagarlista – anpassat efter er förening.' },
+  { title: 'Ni godkänner', text: 'Ni ser korrektur och bestämmer. Inget skickas utan ert ok.' },
+  { title: 'Vi skickar', text: 'Tryckt brev, e-post eller båda – i tid till säsongsstart.' },
+];
+---
+
+<BaseLayout title="Föreningsbrev">
+  <Hero
+    eyebrow="Utskick för föreningar"
+    title="Brev som får fler att bli medlemmar, sponsorer och knattar"
+    lead="Föreningsbrev är er partner för utskick – till befintliga medlemmar, till sponsorer och till dem ni vill locka in i föreningen. Ni fokuserar på verksamheten, vi ser till att budskapet når fram."
+  >
+    <a href={url('/tjanster')} class="btn-primary">Se våra tjänster</a>
+    <a href={`mailto:${CONTACT_EMAIL}`} class="btn-secondary">Kontakta oss</a>
+  </Hero>
+
+  <section class="container-page py-16">
+    <h2 class="text-3xl font-bold text-brand-900">Tre typer av utskick</h2>
+    <p class="mt-3 max-w-2xl text-slate-600">
+      Oavsett om ni vill hålla kontakten, tacka och värva sponsorer eller fylla nästa års knattegrupp hjälper vi er hela vägen.
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      <ServiceCard
+        icon="members"
+        title="Till medlemmar"
+        text="Medlemsbrev, kallelser till årsmöte, avgiftspåminnelser och säsongsinformation."
+        href={url('/tjanster#medlemmar')}
+      />
+      <ServiceCard
+        icon="sponsors"
+        title="Till sponsorer"
+        text="Tack-brev, årsrapporter och erbjudanden som gör det lätt för företag att stötta er."
+        href={url('/tjanster#sponsorer')}
+      />
+      <ServiceCard
+        icon="recruit"
+        title="Värva nya"
+        text="Återkommande kampanjer, t.ex. varje år till alla barn som når knatteåldern i ert område."
+        href={url('/tjanster#rekrytering')}
+      />
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-16">
+    <div class="container-page">
+      <h2 class="text-3xl font-bold text-brand-900">Så funkar det</h2>
+      <p class="mt-3 max-w-2xl text-slate-600">Ett enkelt upplägg från första kontakt till levererat utskick.</p>
+      <div class="mt-10">
+        <Steps steps={steps} />
+      </div>
+      <a href={url('/sa-funkar-det')} class="mt-8 inline-block font-semibold text-brand-700 hover:underline">
+        Läs mer och se priser →
+      </a>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>
