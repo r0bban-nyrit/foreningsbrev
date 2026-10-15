@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+import { url } from '../lib/url';
+
+const services = [
+  {
+    id: 'medlemmar',
+    title: 'Utskick till medlemmar',
+    lead: 'Håll medlemmarna informerade och engagerade – utan att styrelsen behöver sitta med kuvert och adresslistor.',
+    points: [
+      'Medlemsbrev och nyhetsbrev inför säsongen',
+      'Kallelse till årsmöte med dagordning',
+      'Påminnelse om medlemsavgift',
+      'Inbjudningar till evenemang, cuper och läger',
+    ],
+  },
+  {
+    id: 'sponsorer',
+    title: 'Utskick till sponsorer',
+    lead: 'Visa vad stödet betyder och gör det enkelt för fler företag att vilja synas med er.',
+    points: [
+      'Tack-brev och årsrapport till befintliga sponsorer',
+      'Sponsorpaket och erbjudanden till nya företag',
+      'Lokala utskick till företag i närområdet',
+      'Uppföljning inför ny säsong',
+    ],
+  },
+  {
+    id: 'rekrytering',
+    title: 'Värva nya medlemmar',
+    lead: 'Nå familjer och nya målgrupper i rätt tid – till exempel varje år när en ny årskull blir gammal nog att börja.',
+    points: [
+      'Årlig knattekampanj till barn som når startåldern',
+      'Inbjudan till prova-på-dagar och öppen träning',
+      'Utskick till nyinflyttade i området',
+      'Kampanjer för nya sektioner eller lag',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Tjänster"
+  description="Utskick till medlemmar, sponsorer och för att värva nya medlemmar – t.ex. årliga knattekampanjer."
+>
+  <Hero
+    eyebrow="Tjänster"
+    title="Rätt utskick till rätt mottagare"
+    lead="Vi hjälper till med allt från text och layout till tryck, adresser och leverans – eller bara de delar ni behöver."
+  >
+    <a href={url('/sa-funkar-det')} class="btn-primary">Så funkar det & priser</a>
+  </Hero>
+
+  <div class="container-page space-y-16 py-16">
+    {
+      services.map((s) => (
+        <section id={s.id} class="scroll-mt-24 grid gap-8 md:grid-cols-2 md:items-start">
+          <div>
+            <h2 class="text-3xl font-bold text-brand-900">{s.title}</h2>
+            <p class="mt-4 text-lg text-slate-600">{s.lead}</p>
+          </div>
+          <ul class="space-y-3 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            {s.points.map((p) => (
+              <li class="flex gap-3">
+                <svg class="mt-0.5 h-5 w-5 flex-none text-brand-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
+                </svg>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="bg-slate-50 py-16">
+    <div class="container-page">
+      <h2 class="text-3xl font-bold text-brand-900">Det här ingår</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div><h3 class="font-bold text-brand-900">Text</h3><p class="mt-2 text-sm text-slate-600">Vi skriver eller putsar på ert budskap.</p></div>
+        <div><h3 class="font-bold text-brand-900">Layout</h3><p class="mt-2 text-sm text-slate-600">Med er logga och era färger.</p></div>
+        <div><h3 class="font-bold text-brand-900">Mottagare</h3><p class="mt-2 text-sm text-slate-600">Er medlemslista eller ett urval för rekrytering.</p></div>
+        <div><h3 class="font-bold text-brand-900">Leverans</h3><p class="mt-2 text-sm text-slate-600">Tryck och utskick via post eller e-post.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

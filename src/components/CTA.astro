@@ -1,0 +1,22 @@
+---
+import { CONTACT_EMAIL } from '../lib/url';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Ska vi ta ert nästa utskick tillsammans?',
+  text = 'Berätta kort om er förening och vad ni vill nå ut med, så återkommer vi med ett förslag.',
+} = Astro.props;
+---
+
+<section class="container-page py-16">
+  <div class="rounded-3xl bg-brand-900 px-6 py-12 text-center text-white sm:px-12">
+    <h2 class="text-3xl font-bold text-balance">{title}</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-brand-100">{text}</p>
+    <a href={`mailto:${CONTACT_EMAIL}?subject=Utskick%20f%C3%B6r%20v%C3%A5r%20f%C3%B6rening`} class="mt-8 inline-flex rounded-lg bg-accent-400 px-6 py-3 font-semibold text-brand-900 hover:bg-white">
+      Skriv till oss
+    </a>
+  </div>
+</section>
